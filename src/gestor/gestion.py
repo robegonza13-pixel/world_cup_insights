@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+
 class GestorPartidos:
     def __init__(self, df):
         self.__df = df
@@ -29,3 +30,20 @@ class GestorPartidos:
         )
         porcentajes = pd.Series(resultado).value_counts(normalize=True) * 100
         return porcentajes
+
+    def get_enfrentamientos_directos(self, equipo1, equipo2):
+        condicion1 = (self.__df['home_team'] == equipo1) & (self.__df['away_team'] == equipo2)
+        condicion2 = (self.__df['home_team'] == equipo2) & (self.__df['away_team'] == equipo1)
+        df_enfrentamientos = self.__df[condicion1 | condicion2]
+        return df_enfrentamientos
+
+    def get_campeones(self):
+        fechas = pd.to_datetime(self.__df['date'])
+        df_temp = self.__df.copy()
+        df_temp['anio'] = fechas.dt.year
+
+        indices_finales = df_temp.groupby('anio')['date'].idxmax()
+        finales = df_temp.loc[indices_finales].copy()
+
+        finales['campeon'] = np.where(finales['home_score'] > finales['away_score'], finales['home_team'], finales['away_team'])
+        return finales[['anio', 'campeon']]
