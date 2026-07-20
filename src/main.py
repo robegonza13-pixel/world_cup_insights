@@ -1,7 +1,7 @@
 from ingesta.carga import CargadorDatos
 from gestor.gestion import GestorPartidos
 from eda.analisis_eda import ProcesadorEDA
-from visualizacion.Visualizaciones import Visualizador
+from visualizacion.visualizaciones import Visualizador
 
 
 url = "https://raw.githubusercontent.com/martj42/international_results/master/results.csv"
