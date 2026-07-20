@@ -1,5 +1,4 @@
 import pandas as pd
-import os
 
 class CargadorDatos:
     def __init__(self, url, carpeta_raw, carpeta_processed):
