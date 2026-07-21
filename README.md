@@ -25,27 +25,108 @@ El sistema descarga los datos desde un archivo CSV público, los procesa mediant
 - NumPy
 - Jupyter Notebook
 
-world_cup_insights
+## Estructura del proyecto
 
+```text
+world_cup_insights/
 ├── src/
 │   ├── ingesta/
 │   ├── gestor/
 │   ├── eda/
 │   ├── visualizacion/
+│   ├── helpers/
 │   └── main.py
 │
 ├── notebooks/
+│   ├── 01_EDA.ipynb
+│   └── 02_Visualizacion.ipynb
+│
 ├── data/
 │   ├── raw/
 │   └── processed/
 │
+├── dashboard/
+│   └── app.py
+│
 └── README.md
+```
+## Instalación
 
-Abrir:
+1. Clonar el repositorio.
+2. Instalar las dependencias:
 
-notebooks/01_EDA.ipynb
+```bash
+pip install pandas matplotlib seaborn numpy jupyter
+```
 
-notebooks/02_Visualizacion.ipynb
+## Ejecución
+
+El análisis del proyecto se encuentra en los siguientes notebooks:
+
+- `notebooks/01_EDA.ipynb`
+- `notebooks/02_Visualizacion.ipynb`
+
+Opcionalmente, el proyecto puede ejecutarse desde:
+
+```bash
+python src/main.py
+```
+
+## Clases principales
+
+### `CargadorDatos`
+
+Responsable de la descarga, carga y persistencia de los datos.
+
+**Funciones principales:**
+- Descargar el dataset desde la URL pública.
+- Filtrar únicamente los partidos de la Copa Mundial de la FIFA.
+- Cargar el archivo CSV en un DataFrame de Pandas.
+- Guardar los datos en `data/raw/` y `data/processed/`.
+
+---
+
+### `GestorPartidos`
+
+Proporciona métodos de consulta sobre el conjunto de datos sin modificar la información.
+
+**Funciones principales:**
+- Buscar partidos por equipo.
+- Consultar partidos por año.
+- Consultar partidos por país sede.
+- Obtener información de un partido específico.
+- Realizar consultas estadísticas sobre los encuentros.
+
+---
+
+### `ProcesadorEDA`
+
+Realiza el análisis exploratorio y el procesamiento de los datos.
+
+**Funciones principales:**
+- Limpieza de datos.
+- Creación de columnas derivadas (año, total de goles, diferencia de goles y ganador).
+- Generación de estadísticas descriptivas.
+- Cálculo de la matriz de correlación.
+- Agrupaciones y análisis por edición del Mundial.
+- Detección de valores atípicos.
+
+---
+
+### `Visualizador`
+
+Genera las visualizaciones utilizadas para el análisis de los datos.
+
+**Funciones principales:**
+- Histogramas.
+- Gráficos de barras.
+- Scatter plots.
+- Heatmaps.
+- Otras visualizaciones para mostrar tendencias y comparaciones.
+
+---
+
+
 
 ## Autores
 - Roberto Gonzalez gomez
