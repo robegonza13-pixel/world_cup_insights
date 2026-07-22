@@ -34,7 +34,6 @@ world_cup_insights/
 │   ├── gestor/
 │   ├── eda/
 │   ├── visualizacion/
-│   ├── helpers/
 │   └── main.py
 │
 ├── notebooks/
@@ -45,8 +44,7 @@ world_cup_insights/
 │   ├── raw/
 │   └── processed/
 │
-├── dashboard/
-│   └── app.py
+├
 │
 └── README.md
 ```
